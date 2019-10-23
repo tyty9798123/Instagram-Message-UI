@@ -16,17 +16,34 @@
                             </span>
                         </div>
                         <hr>
-                        <ul>
-                            <li v-for="(item, index) in messages" :key="index" class="mt-3">
-                                {{ item.sender }}:
-                                <span v-if="item.text" v-text="item.text">
-                                </span>
-                                <span v-if="!item.text" style="color: red;">
-                                    無法顯示
-                                </span>
-                                {{ item.created_at | timestamp }}
-                            </li>
-                        </ul>
+                        <div>
+                            <div v-for="(item, index) in messages" :key="index" class="mt-3">
+                                <div v-if="item.sender == chatData.ig_account">
+                                    <el-tag type="info" v-if="item.text" style="word-break: break-all;">
+                                        {{ item.text }} <br />
+                                        {{ item.created_at | timestamp }}
+                                    </el-tag>
+                                    <el-tag type="danger" v-if="!item.text">
+                                        無法顯示<br>
+                                        {{ item.created_at | timestamp }}
+                                    </el-tag>
+                                </div>
+                                <div v-if="item.sender != chatData.ig_account" class="text-right">
+                                    <el-tag type="success" v-if="item.text" style=" max-width:300px;">
+                                        
+                                        <span style="word-break: break-all;">
+                                            {{ item.text }}
+                                        </span> <br />
+                                        {{ item.created_at | timestamp }}
+                                    </el-tag>
+                                    <el-tag type="danger" v-if="!item.text">
+                                        無法顯示<br>
+                                        {{ item.created_at | timestamp }}
+                                    </el-tag>
+                                </div>
+
+                            </div>
+                        </div>
                     </el-card>
                     
                 </el-col>
