@@ -53,14 +53,17 @@ export default {
         this.file_name = fake_path.split("\\").pop();
       }
       catch(e){
-        alert('資料格式不正確。')
+        this.$message.error('資料格式不正確。');
       }
     },
     submit(){
       if (this.is_checked){
         // send_data_to_chat_by_eventBus
         if (this.check_ig_account()){
-          alert(`找到 ${this.designation_obj.conversation.length} 筆對話紀錄！`)
+          this.$message({
+            message: `找到 ${this.designation_obj.conversation.length} 筆對話紀錄！`,
+            type: 'success'
+          });
           console.log(this.designation_obj)
           var obj = {
             upload_obj: this.upload_obj,
@@ -72,7 +75,7 @@ export default {
           this.$router.push({name: 'Chat'})
         }
         else{
-          alert('該使用者不存在於您的對話紀錄內！')
+          this.$message.error('該使用者不存在於您的對話紀錄內！');
         }
         //this.$bus.$emit('', response.data.message, 'danger')
       }

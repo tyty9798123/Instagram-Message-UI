@@ -9,9 +9,11 @@ import './bus'
 import Vuex from 'vuex';
 import store from './store/index';
 import timestampFilter from './filters/timestamp';
-
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(Vuex);
+Vue.use(ElementUI)
 Vue.filter('timestamp', timestampFilter);
 
 
