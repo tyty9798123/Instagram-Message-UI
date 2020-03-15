@@ -60,10 +60,6 @@ export default {
       if (this.is_checked){
         // send_data_to_chat_by_eventBus
         if (this.check_ig_account()){
-          this.$message({
-            message: `找到 ${this.designation_obj.conversation.length} 筆對話紀錄！`,
-            type: 'success'
-          });
           console.log(this.designation_obj)
           var obj = {
             upload_obj: this.upload_obj,
